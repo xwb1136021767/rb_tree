@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/project/rb_tree/base/RBTreeNode.h
+utility
+-
+stack
+-
+Windows.h
+-
+
+D:/project/rb_tree/main.cpp
+iostream
+-
+queue
+-
+random
+-
+base/RBTreeNode.h
+D:/project/rb_tree/base/RBTreeNode.h
+
