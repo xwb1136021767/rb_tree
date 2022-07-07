@@ -6,61 +6,48 @@
 #include "base/RBTreeNode.h"
 
 
-class myClass {
+class A
+{
 public:
-    myClass& operator->() {
-        std::cout << "myClass ->() is called!" << std::endl;
-        return *this;
-    }
-    void action() {
-        std::cout << "myClass action() is called!" << std::endl;
-        return;
-    }
+    A(int a = 0) :ma(a){ std::cout << "A" << std::endl; }
+public:
+    int ma;
+};
+class B: virtual public A
+{
+public:
+    B(int b) :A(b), mb(b){ std::cout << "B" << std::endl; }
+public:
+    int mb;
+};
+class C :  virtual public A
+{
+public:
+C(int c) :A(c), mc(c){ std::cout << "C" << std::endl; }
+public:
+int mc;
+};
+class E
+{
+public:
+    E(int e) :me(e){ std::cout << "E" << std::endl; }
+public:
+    int me;
+};
+class D : public B, public C, virtual public E
+{
+public:
+D(int d) :B(d), C(d),E(d),md(d){ std::cout << "D" << std::endl; }
+public:
+int md;
 };
 
-class Animal {
-public:
-    virtual void cry()
-    {
-        std::cout << "Animal cry" << std::endl;
-    }
-};
 
-class Dog : public Animal{
-public:
-    void look()
-    {
-        std::cout << "Dog look " << std::endl;
-    }
-};
-
-class Cat : public Animal{
-public:
-    void look()
-    {
-        std::cout << "Cat look " << std::endl;
-    }
-};
 
 using namespace std;
 int main() {
-    Animal* base = new Dog();
-    base->cry();
 
-    Dog* dog = dynamic_cast<Dog*>(base);
-    if(dog)
-        cout << "success" << endl;
-    else
-        cout << "failure" << endl;
-
-
-    try{
-        Cat& cat = dynamic_cast<Cat&>(*base);
-
-    }catch (std::bad_cast){
-        cout << "bad_cast"<<endl;
-    }
-
+    D d(10);
 
 
 //    RBTree<int,int> root;
